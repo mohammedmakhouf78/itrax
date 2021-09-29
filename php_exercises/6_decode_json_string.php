@@ -9,7 +9,6 @@
  "Detail": {
  "Publisher": "Little Brown"
  }}
-
  */
 
 

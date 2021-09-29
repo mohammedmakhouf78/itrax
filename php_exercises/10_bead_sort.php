@@ -20,20 +20,22 @@ function columns($uarr)
         return array_chunk($n[0], 1);
     }
     array_unshift($uarr, NULL);
+    print_r($uarr);
     $transpose = call_user_func_array('array_map', $uarr);
+    print_r($transpose);
     return array_map('array_filter', $transpose);
 }
 
 
 function bead_sort($uarr)
 {
-    print_r($uarr);
+    // print_r($uarr);
     
     foreach ($uarr as $e)
     {
         $poles []= array_fill(0, $e, 1);
     }
-    print_r($poles);
+    // print_r($poles);
     return array_map('count', columns(columns($poles)));
 }
 
