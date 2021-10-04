@@ -33,21 +33,20 @@ $users = [
     ],
 ];
 
-
 // print the skills of every person
 
 function solutionOne(array $arr) : void
 {
-    foreach ($arr as $value) 
+    foreach ($arr as $value)
     {
         echo "skills <br>";
         echo "soft : " . $value['skills']['soft'][0] . "<br>";
-        echo "tech : " . $value['skills']['tech'][0] . "  " . $value['skills']['tech'][1];
+        echo "tech : " . $value['skills']['tech'][0] . "  " . $value['skills']['tech'][1] . $value['skills']['tech'][2];
         echo "<hr>";
     }
 }
 
-solutionOne($users);
+// solutionOne($users);
 
 
 echo "<hr>";
@@ -77,7 +76,7 @@ function solutionTwo(array $arr) : void
     }
 }
 
-solutionTwo($users);
+// solutionTwo($users);
 
 
 
@@ -117,7 +116,7 @@ function solutionThree(array $arr) : void
     }
 }
 
-solutionThree($users);
+// solutionThree($users);
 
 
 
@@ -159,7 +158,7 @@ function solution_four(array $arr) : void
     }
 }
 
-solution_four($users);
+// solution_four($users);
 
 
 
@@ -191,7 +190,7 @@ function solution_five(array $arr) : void
     }
 }
 
-solution_five($users);
+// solution_five($users);
 
 
 
@@ -221,4 +220,27 @@ function get_element_by_key(array $arr , string $wanted_key)
 }
 
 
+var_dump(get_element_by_key($users,""));
 
+
+
+
+
+function solution_six(array $arr,array $keys) : void
+{
+    foreach ($arr as $user)
+    {
+        foreach ($keys as $value) {
+            echo "$value : ";
+            foreach (get_element_by_key($user , $value) as $element) 
+            {
+                echo  $element . " ";
+            }
+            echo "<br>";
+        }
+        echo "<hr>";
+    }
+}
+
+
+// solution_six($users,['soft','tech']);

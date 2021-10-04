@@ -1,0 +1,51 @@
+:root{
+    --bg-color-register:#DFE4EA;
+    --outline-color-register:#16200E;
+    --type-color-register:#656C4C;
+
+    --bg-color-login:#D90E3B;
+    --outline-color-login:#EB7F7F;
+    --type-color-login:#F0AEAF;
+
+    --violet:rgb(104, 9, 121);
+}
+
+html{
+    font-family: 'Roboto Mono', monospace;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: var(--bg-color-register);
+}
+
+#register,#login{
+    padding: 4em;
+    
+}
+
+.btn{
+    width: 100%;
+    font-size: 1.5em;
+    padding: 0.4em 0em;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--outline-color-register);
+    color: var(--bg-color-register);
+}
+
+.btn:hover{
+    background-color: var(--bg-color-register);
+    color: var(--outline-color-register);
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+
+.d-flex{
+    display: flex;
+}
