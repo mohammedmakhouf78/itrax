@@ -1,5 +1,7 @@
 <?php
 
+$id = $_GET['id'];
+
 $hostname = 'localhost';
 $username = "mohammed";
 $password = '';
@@ -8,9 +10,13 @@ $database_port = 3307;
 
 $conn = mysqli_connect($hostname,$username,$password,$database_name,$database_port);
 
-$id = $_POST['id'];
-$image = $_POST['image'];
-mysqli_query($conn,"DELETE FROM `image` WHERE `image`.`id` = $id");
-unlink($image);
+$query = mysqli_query($conn,"DELETE FROM `user` WHERE `id` = $id");
 
-header("location: upload.php");
+if(mysqli_affected_rows($conn) > 0)
+{
+    header('location: index.php');
+}
+else
+{
+    echo "Error in Deleting";
+}
