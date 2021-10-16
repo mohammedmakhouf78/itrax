@@ -1,0 +1,206 @@
+:root{
+    --light-blue:#03e9f4;
+    --light-red:#C62E65;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: linear-gradient(#141e30, #243b55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    font-family: sans-serif;
+}
+
+.form-con{
+    width: 400px;
+    background-color: #0E1421;
+    padding: 2em;
+}
+
+
+.form-con .form-controller{
+    position: relative;
+}
+
+.form-con h1{
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+form input{
+    width: 100%;
+    border: none;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 2em;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+form label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    transition: 0.5s;
+}
+
+form input:focus ~ label,
+form input:valid ~ label{
+    top: -20px;
+    color: var(--light-blue);
+    font-size: 12px;
+}
+
+form a{
+    display: inline-block;
+    padding: 10px 20px;
+    color: var(--light-blue);
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
+    position: relative;
+}
+
+form a:hover{
+    background: var(--light-blue);
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--light-blue),
+              0 0 25px var(--light-blue),
+              0 0 50px var(--light-blue),
+              0 0 100px var(--light-blue);
+}
+
+form a span {
+    position: absolute;
+    display: block;
+}
+
+form a span:nth-child(1){
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--light-blue));
+    animation: btn1 1s linear infinite;
+}
+
+@keyframes btn1{
+    0%{
+        left: -100%;
+    }
+    50%,100%{
+        left: 100%;
+    }
+}
+
+
+
+form a span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--light-blue));
+    animation: btn2 1s linear infinite;
+    animation-delay: 0.25s;
+}
+
+
+@keyframes btn2{
+    0%{
+        top: -100%;
+    }
+    50%,100%{
+        top: 100%;
+    }
+}
+
+form a span:nth-child(3){
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, var(--light-blue));
+    animation: btn3 1s linear infinite;
+    animation-delay: .5s;
+}
+
+@keyframes btn3{
+    0%{
+        right: -100%;
+    }
+    50%,100%{
+        right: 100%;
+    }
+}
+
+
+form a span:nth-child(4){
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, var(--light-blue));
+    animation: btn4 1s linear infinite;
+    animation-delay: .75s;
+}
+
+
+@keyframes btn4{
+    0%{
+        bottom: -100%;
+    }
+    50%,100%{
+        bottom: 100%;
+    }
+}
+
+form .btns{
+    display: flex;
+    justify-content: space-between;
+}
+
+form .back{
+    color: var(--light-red);
+}
+
+form .back:hover{
+    background: var(--light-red);
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--light-red),
+              0 0 25px var(--light-red),
+              0 0 50px var(--light-red),
+              0 0 100px var(--light-red);
+}
+
+form .back span:nth-child(1){
+    background: linear-gradient(90deg, transparent, var(--light-red));
+}
+form .back span:nth-child(2){
+    background: linear-gradient(90deg, transparent, var(--light-red));
+}
+form .back span:nth-child(3){
+    background: linear-gradient(270deg, transparent, var(--light-red));
+}
+form .back span:nth-child(4){
+    background: linear-gradient(360deg, transparent, var(--light-red));
+}

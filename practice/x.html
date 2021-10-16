@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page">
+        <nav>
+            <ul>
+                <button>x</button>
+                <a href=""><li>home</li></a>
+                <a href=""><li>page</li></a>
+                <a href=""><li>about</li></a>
+                <a href=""><li>contact </li></a>
+                <a href=""><li>map</li></a>
+            </ul>
+            <main class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+           </main>
+          </nav>
+        <div class="fdiv">
+            <h1> full landing page </h1>
+          <p>  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur consequatur quas consectetur cum, dignissimos nulla qui repudiandae necessitatibus distinctio, enim nesciunt corrupti iusto nihil neque, voluptates in nisi rem officia.</p>
+          <a href="#"> get Started </a>
+        </div>
+        <script>
+            var ul = document.querySelector('nav ul');
+
+            var burger = document.querySelector('.burger');
+
+            var btn = document.querySelector('nav ul button');
+
+            burger.addEventListener("click", () => {
+                ul.classList.remove("nav-close")
+                ul.classList.add("nav-active")
+            })
+            btn.addEventListener("click", () => {
+                ul.classList.remove("nav-active")
+                ul.classList.add("nav-close")
+            })
+        </script>
+</body>
+</html>
