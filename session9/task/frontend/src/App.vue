@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar />
+    <NavBar @blogAdded="blogAdded"/>
      <div class="blogs">
        <Blog v-for="(blog,index) in blogs" :key="index" :blog="blog" />
      </div>
@@ -20,6 +20,11 @@ export default {
   data() {
     return {
       blogs:[],
+    }
+  },
+  methods: {
+    blogAdded:function(blog){
+      this.blogs.push(blog)
     }
   },
   async created() {

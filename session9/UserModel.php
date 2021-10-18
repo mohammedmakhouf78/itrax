@@ -27,7 +27,7 @@ class UserModel
 
     public function insert()
     {
-
+        
     }
 
     public function update()

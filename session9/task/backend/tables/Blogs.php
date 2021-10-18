@@ -1,7 +1,7 @@
 <?php
 include '../DB.php';
 
-class Blogs extends DB
+class Blogs extends DB2
 {
     public static $table = 'blogs';
 

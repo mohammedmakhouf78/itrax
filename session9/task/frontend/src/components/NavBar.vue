@@ -23,7 +23,7 @@ export default {
     methods: {
         hideModal:function(){
             this.modalShow = false
-        }
+        },
     },
 }
 </script>

@@ -81,11 +81,15 @@ export default {
                 user:this.form.user
             })
             .then(res => {
-               console.log(res)
+               if(res.data.success){
+                   this.$parent.$emit("blogAdded",res.data.data)
+                   this.show = false
+               }
             })
             .catch(err => {
                 console.log(err)
             })
+            this.show = false
         },
         onReset(event) {
             event.preventDefault()

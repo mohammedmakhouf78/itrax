@@ -1,6 +1,6 @@
 <?php
 
-class DB
+class DB2
 {
     public $conn;
     private $table;
