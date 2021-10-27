@@ -28,8 +28,6 @@ class Rectangle extends Shape
             echo "Error";
         }
     }
-
-
 }
 
 class Square extends Shape

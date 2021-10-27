@@ -1,0 +1,178 @@
+<template lang="">
+    <div class="blogs site-pad">
+        <div class="btn-con">
+            <button class="btn" @click="modalShow=!modalShow">Make a Blog</button>
+        </div>
+        <div class="cards">
+            <Card v-for="(item, index) in posts" :key="index" :post="item" />
+        </div>
+
+        <div class="create-modal" v-if="modalShow">
+            <div class="bg">
+                <button class="btn close" @click="modalShow=!modalShow">X</button>
+                <form @submit="submit" method="POST">
+                    <div class="form-control">
+                        <label for="title">
+                            <i class="fas fa-user"></i>
+                        </label>
+                        <input v-model="post.title" type="text" id="title" placeholder="Post Title">
+                    </div>
+                    <div class="form-control">
+                        <label for="description">
+                            <i class="fas fa-user"></i>
+                        </label>
+                        <input v-model="post.description" type="text" id="description" placeholder="Post Description">
+                    </div>
+                    <div class="form-control">
+                        <input type="file" @change="handleFileUpload($event)">
+                    </div>
+                    <button class="btn">Post</button>
+                </form>
+            </div>
+        </div>
+        <Message :msg="message.msg" :cls="message.cls" :showing="message.showMsg" />
+    </div>
+</template>
+<script>
+import Card from '../components/PostCard.vue'
+export default {
+    components:{
+        Card:Card,
+    },
+    data() {
+        return {
+            modalShow:false,
+            post:{
+                file:"",
+                title:"",
+                description:""
+            },
+            posts:[]
+        }
+    },
+    computed:{
+        authEmail:function(){
+            return this.$store.state.user.email
+        }
+    },
+    methods: {
+        submit:function(e){
+            e.preventDefault();
+            if(this.post.title == ""){
+                this.message.msg = "Please enter the post title"
+                this.error()
+                return
+            }else if(this.post.description == ""){
+                this.message.msg = "Please enter the post description"
+                this.error()
+                return
+            }else if(this.post.file == ""){
+                this.message.msg = "Please select the image"
+                this.error()
+                return
+            }
+
+            let formData = new FormData();
+            formData.append('file',this.post.file)
+            formData.append('email',this.authEmail)
+            formData.append('description',this.post.description)
+            formData.append('title',this.post.title)
+
+            this.$axios.post('CreatePost.php',
+            formData,
+            {
+                header:{
+                    'Content-Type' : 'multipart/form-data'
+                }
+            })
+            .then(res => {
+               if(res.data.success){
+                   this.message.msg = "Your post was successfully published"
+                   this.success();
+                   this.modalShow = false
+                   this.posts.unshift(res.data.data)
+                   console.log(res.data)
+               }else{
+                   this.message.msg = "Sorry Try again"
+                   this.error();
+                   console.log(res)
+               }
+            })
+            .catch((err) => {
+                this.message.msg = "There was an error"
+                this.error();
+                console.log(err)
+            })
+
+            
+        },
+        handleFileUpload:function(e){
+            this.post.file = e.target.files[0];
+        }
+    },
+
+
+    created() {
+        this.$axios.get('GetPosts.php')
+            .then(res => {
+               if(res.data.success){
+                   this.posts = res.data.data
+                   console.log(this.posts)
+               }else{
+                   console.log(res)
+               }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    },
+
+}
+</script>
+<style scoped>
+    .cards{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .card{
+        margin-bottom: 2em;
+    }
+
+    .btn-con{
+        margin-bottom: 2em;
+        text-align: right;
+    }
+
+    .btn-con .btn{
+        background-color: var(--success);
+    }
+
+    .create-modal{
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.699);
+        /* transform: translateX(-50%) translateY(-50%); */
+    }
+
+    .create-modal .bg{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        background-color: white;
+        padding: 5em 2em;
+    }
+
+    .close{
+        background-color: var(--danger);
+        border-radius: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+</style>
