@@ -1,9 +1,9 @@
 <?php
 
-namespace OOP\DataBase;
+namespace makhlouf\db;
 
 
-class DB
+class DbWrapper
 {
     public $conn;
     public $query;
@@ -111,24 +111,13 @@ class DB
         return $this;
     }
 
-    public function join($table)
-    {
-        $this->sql .= " JOIN `$table` ";
-        return $this;
-    }
-
-    public function on($condition)
-    {
-        $this->sql .= " on $condition ";
-        return $this;
-    }
-
-    public function excute()
+    public function excute() : ?bool
     {
         $this->excuteQuery();
-        
+        echo mysqli_insert_id($this->conn);
+        die;
         if(mysqli_affected_rows($this->conn ) > 0){
-            return true;
+           return $this->query->insert_id;
         }else{
             $this->showError();
         }
@@ -143,10 +132,10 @@ class DB
     {
         $row = "";
         foreach ($data as $key => $value) {
-            if($key != "id")
-            {
+            // if($key != "id")
+            // {
                 $row .= (gettype($value) == "string") ? "`$key` = '$value'," : "`$key` = $value," ;
-            }
+            // }
         }
         $row = rtrim($row,",");
         return $row;
@@ -174,12 +163,6 @@ class DB
             }
         }
         return 0;
-    }
-
-    public function getLastInsertedId()
-    {
-        $id = mysqli_insert_id($this->conn);
-        return $id;
     }
 
     public function __destruct()

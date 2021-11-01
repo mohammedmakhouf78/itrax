@@ -12,6 +12,6 @@ header("Content-Type: application/json");
 
 
 
-$data = Blog::getAllBlogs();
+$data = Blog::deleteBlog($_POST['id']);
 
 echo json_encode(Helper::makeResponse($data));

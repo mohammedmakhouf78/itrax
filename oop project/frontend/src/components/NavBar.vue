@@ -51,20 +51,14 @@ export default {
             navActive:false
         }
     },
-    computed:{
-        loggedIn:function(){
-            if(this.$store.state.loggedIn == "false"){
-                return false
-            }else{
-                return true
-            }
-        }
-    },
-    // created () {
-    //     window.addEventListener('scroll', this.onScroll);
-    // },
-    // destroyed () {
-    //     window.removeEventListener('scroll', this.onScroll);
+    // computed:{
+    //     loggedIn:function(){
+    //         if(this.$store.state.loggedIn == "false"){
+    //             return false
+    //         }else{
+    //             return true
+    //         }
+    //     }
     // },
     methods: {
         logout:function(){
@@ -78,15 +72,6 @@ export default {
         padding-top: 1em;
         padding-bottom: 1em;
     }
-
-    /* .bg-light{
-        position: fixed;
-        left: 0;
-        top: 0;
-        right: 0;
-        background-color: white;
-        z-index: 999;
-    } */
 
     .top-nav,.top-nav .links,.bot-nav,.bot-nav ul{
         display: flex;
@@ -107,12 +92,6 @@ export default {
     .top-nav .links p:nth-child(2){
         margin-left: 1em;
     }
-
-    
-
-    .bot-nav ul{
-        list-style: none;
-    }
    
     .bot-nav{
         margin-top: 1.5em;
@@ -122,7 +101,9 @@ export default {
         width: 100%;
         justify-content: right;
         color: var(--dark-blue);
-        transform: translateY(0%);
+        list-style: none;
+        /* transform: translateY(0%); */
+        transition: transform 0.5s ease;
     }
     .bot-nav ul li{
         margin-left: 2em;
@@ -170,7 +151,7 @@ export default {
         }
 
         .bot-nav ul{
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             background-color: white;
@@ -179,7 +160,6 @@ export default {
             transform: translateY(-100%);
             justify-content: space-between;
             padding: 3em 0em;
-            transition: transform 0.5s ease;
         }
 
     }

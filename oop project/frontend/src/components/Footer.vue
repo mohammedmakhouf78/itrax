@@ -125,4 +125,15 @@ export default {
         text-align: center;
         font-size: 18px;
     }
+
+
+    @media only screen and (max-width:800px){
+        .row1{
+            flex-wrap: wrap;
+        }
+
+        .row1 .col{
+            width: 40%;
+        }
+    }
 </style>

@@ -1,6 +1,9 @@
 <?php
 
-include './DB.php';
+spl_autoload_register(function ($class_name) {
+    $parts = explode('\\', $class_name);
+    include end($parts) . '.php';
+});
 use OOP\DataBase\DB;
 
 header('Access-Control-Allow-Origin: http://localhost:8080');
@@ -21,24 +24,24 @@ $user = [
 
 $inserted = $db->insert('users',$user)->excute();
 
-if($inserted)
-{
-    $response = [
-        "success" => true,
-        'message' => "ok",
-        "status code" => 201,
-        "data" => $data
-    ];
-}
-else
-{
-    $response = [
-        "success" => false,
-        'message' => "error",
-        "status code" => 403,
-        "data" => $data
-    ];
-}
+// if($inserted)
+// {
+//     $response = [
+//         "success" => true,
+//         'message' => "ok",
+//         "status code" => 201,
+//         "data" => $data
+//     ];
+// }
+// else
+// {
+//     $response = [
+//         "success" => false,
+//         'message' => "error",
+//         "status code" => 403,
+//         "data" => $data
+//     ];
+// }
 
 
-echo json_encode($response);
+echo json_encode(Helper::makeResponse($data));

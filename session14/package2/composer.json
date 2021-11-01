@@ -1,0 +1,5 @@
+{
+    "require": {
+        "makhlouf/db-wrapper": "^1.0"
+    }
+}

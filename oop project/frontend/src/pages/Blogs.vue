@@ -1,10 +1,10 @@
 <template lang="">
     <div class="blogs site-pad">
-        <div class="btn-con">
+        <div class="btn-con" v-if="loggedIn">
             <button class="btn" @click="modalShow=!modalShow">Make a Blog</button>
         </div>
         <div class="cards">
-            <Card v-for="(item, index) in posts" :key="index" :post="item" />
+            <Card v-for="(item, index) in posts" :key="index" :post="item" @updateBlog="updateBlog" @deleteBlog="deleteBlog" />
         </div>
 
         <div class="create-modal" v-if="modalShow">
@@ -52,8 +52,8 @@ export default {
     },
     computed:{
         authEmail:function(){
-            return this.$store.state.user.email
-        }
+            return this.$store.state.email
+        },
     },
     methods: {
         submit:function(e){
@@ -91,7 +91,7 @@ export default {
                    this.success();
                    this.modalShow = false
                    this.posts.unshift(res.data.data)
-                   console.log(res.data)
+                   console.log(res.data.data)
                }else{
                    this.message.msg = "Sorry Try again"
                    this.error();
@@ -108,6 +108,17 @@ export default {
         },
         handleFileUpload:function(e){
             this.post.file = e.target.files[0];
+        },
+        updateBlog:function(data){
+            this.posts = this.posts.map((element) => {
+                if(data.id == element.id){
+                    element = data
+                }
+                return element
+            })
+        },
+        deleteBlog:function(id){
+            this.posts = this.posts.filter((element)=> element.id != id)
         }
     },
 
@@ -117,7 +128,7 @@ export default {
             .then(res => {
                if(res.data.success){
                    this.posts = res.data.data
-                   console.log(this.posts)
+                //    console.log(this.posts)
                }else{
                    console.log(res)
                }
@@ -146,33 +157,7 @@ export default {
     }
 
     .btn-con .btn{
-        background-color: var(--success);
+        background-color: var(--primary);
     }
-
-    .create-modal{
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-color: rgba(0, 0, 0, 0.699);
-        /* transform: translateX(-50%) translateY(-50%); */
-    }
-
-    .create-modal .bg{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        background-color: white;
-        padding: 5em 2em;
-    }
-
-    .close{
-        background-color: var(--danger);
-        border-radius: 0;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
+    
 </style>

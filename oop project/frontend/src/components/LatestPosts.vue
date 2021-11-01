@@ -2,15 +2,15 @@
     <div class="latest site-pad">
         <h2>Latest posts</h2>
         <div class="cards">
-            <Card />
-            <Card />
-            <Card />
+            <Card v-for="(item, index) in posts" :key="index" :post="item" />
         </div>
         <div class="other">
-            Older Posts
-            <button class="btn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            <router-link :to="{name:'blogs'}">
+                    Older Posts
+                <button class="btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -18,8 +18,26 @@
 import Card from './PostCard.vue'
 export default {
     components:{
-        Card:Card
-    }
+        Card:Card,
+    },
+    data() {
+        return {
+            posts:[]
+        }
+    },
+    created() {
+        this.$axios.get('getLatestPosts.php')
+            .then(res => {
+               if(res.data.success){
+                   this.posts = res.data.data
+               }else{
+                   console.log(res)
+               }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    },
 }
 </script>
 <style scoped>

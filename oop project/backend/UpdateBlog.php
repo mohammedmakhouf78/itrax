@@ -4,14 +4,11 @@ spl_autoload_register(function ($class_name) {
     include end($parts) . '.php';
 });
 use OOP\Modules\Blog;
-use OOP\Modules\User;
 
 header('Access-Control-Allow-Origin: http://localhost:8080');
 header("Access-Control-Allow-Headers: *");
 header("Content-Type: application/json");
 
-
-$user = User::getUserByEmail($_POST['email']);
 
 if(isset($_FILES['file']))
 {
@@ -20,12 +17,11 @@ if(isset($_FILES['file']))
     move_uploaded_file($tmp,"../frontend/src/assets/blogs/".$name);
 }
 
-$userObj = new User($user['id']);
-$data = $userObj->createPost(new Blog([
+$data = Blog::updateBlog([
+    'id' => $_POST['id'],
     'title' => $_POST['title'],
     'description' => $_POST['description'],
     'image' => $name,
-    'published_at' => date("Y/m/d")
-]));
+]);
 
 echo json_encode(Helper::makeResponse($data));

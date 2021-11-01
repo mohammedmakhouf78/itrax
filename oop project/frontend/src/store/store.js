@@ -6,21 +6,21 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     loggedIn: localStorage.getItem("loggedIn"),
-    user: {
-      email: "",
-    },
+    email: localStorage.getItem("email"),
   },
   getters: {},
   mutations: {
     logIn: (state, payload) => {
       localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("email", payload);
       state.loggedIn = localStorage.getItem("loggedIn");
-      state.user.email = payload;
+      state.email = localStorage.getItem("email");
     },
     logout: (state) => {
       localStorage.setItem("loggedIn", "false");
+      localStorage.setItem("email", "");
       state.loggedIn = localStorage.getItem("loggedIn");
-      state.user.email = "";
+      state.email = localStorage.getItem("email");
     },
   }, //sync
   actions: {

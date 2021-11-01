@@ -36,24 +36,6 @@ export default {
     text-decoration: none;
   }
 
-  input{
-    width: 100%;
-    border: none;
-    padding: 6px 20px;
-    box-sizing: border-box;
-    outline: none;
-    font-size: 18px;
-  }
-
-  .form-control{
-    border-bottom: 1px solid #999;
-    display: flex;
-    align-items: center;
-    margin-bottom: 2em;
-    width: 400px;
-    background-color: var(--white);
-    padding: 0.5em 1em;
-  }
 
   .site-pad{
     padding: 10em 3em;
@@ -161,6 +143,55 @@ export default {
     color: var(--dark-blue);
     margin: 30px 0px;
   }
+
+  .create-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.699);
+    /* transform: translateX(-50%) translateY(-50%); */
+    z-index: 999;
+  }
+
+    .create-modal .bg{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      background-color: white;
+      padding: 5em 2em;
+      z-index: 998;
+    }
+
+    .close{
+      background-color: var(--danger);
+      border-radius: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+  input{
+    width: 100%;
+    border: none;
+    padding: 6px 20px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 18px;
+  }
+
+  .form-control{
+    border-bottom: 1px solid #999;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+    width: 400px;
+    background-color: var(--white);
+    padding: 0.5em 1em;
+  }
+
 
   @media only screen and (max-width:1060px){
     h2{

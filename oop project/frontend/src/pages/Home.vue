@@ -44,7 +44,7 @@ export default {
         Pricing:Pricing,
         LatestPosts:LatestPosts,
         Contact:Contact
-    }
+    },
 }
 </script>
 <style lang="">

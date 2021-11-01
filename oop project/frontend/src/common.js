@@ -26,4 +26,13 @@ export default {
       }, 2000);
     },
   },
+  computed: {
+    loggedIn: function() {
+      if (this.$store.state.loggedIn == "false") {
+        return false;
+      } else {
+        return true;
+      }
+    },
+  },
 };

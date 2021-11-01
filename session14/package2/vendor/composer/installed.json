@@ -1,0 +1,46 @@
+{
+    "packages": [
+        {
+            "name": "makhlouf/db-wrapper",
+            "version": "v1",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mohammedmakhouf78/dbwrapper.git",
+                "reference": "9aefef4f7cd69952470c50347cb882d03d9f1dbf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mohammedmakhouf78/dbwrapper/zipball/9aefef4f7cd69952470c50347cb882d03d9f1dbf",
+                "reference": "9aefef4f7cd69952470c50347cb882d03d9f1dbf",
+                "shasum": ""
+            },
+            "time": "2021-10-27T19:58:55+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "makhlouf\\db\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mohammedmakhlouf78",
+                    "email": "mohammedmakhlouf78@gmail.com"
+                }
+            ],
+            "description": "php database wrapper",
+            "support": {
+                "issues": "https://github.com/mohammedmakhouf78/dbwrapper/issues",
+                "source": "https://github.com/mohammedmakhouf78/dbwrapper/tree/v1"
+            },
+            "install-path": "../makhlouf/db-wrapper"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

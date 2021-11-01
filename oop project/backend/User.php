@@ -22,8 +22,18 @@ class User
         $result = $db->insert('blogs',$blog)->excute();
         if($result)
         {
+            $blog->id = $db->getLastInsertedId();
             return $blog;
         }
         return false;
     }
+
+    public static function getUserByEmail($email)
+    {
+        $db = new DB();
+        $data = $db->select('users','*')->where('email','=',$email)->getRow();
+        return $data;
+    }
+
+    
 }
