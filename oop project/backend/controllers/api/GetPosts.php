@@ -1,9 +1,7 @@
 <?php
-spl_autoload_register(function ($class_name) {
-    $parts = explode('\\', $class_name);
-    include end($parts) . '.php';
-});
-
+include '../../Helper.php';
+use OOP\HelperNS\Helper;
+Helper::autoLoader();
 use OOP\Modules\Blog;
 
 header('Access-Control-Allow-Origin: http://localhost:8080');

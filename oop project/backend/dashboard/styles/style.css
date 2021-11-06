@@ -1,0 +1,283 @@
+:root{
+    --dark-blue:#120D31;
+    --light-blue:#302F4D;
+    --success:#5DA271;
+    --white:#fff;
+    --danger:#D64045;
+    --primary:#19647E;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    font-family: 'Merienda', cursive;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn{
+    border: none;
+    font-size: 1.2em;
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    transition: transform 0.25s ease;
+    letter-spacing: 2px;
+    color: var(--white);
+}
+
+.btn.success{
+    background-color: var(--success);
+}
+
+.btn.danger{
+    background-color: var(--danger);
+}
+
+.btn.primary{
+    background-color: var(--primary);
+}
+
+p.success{
+    padding: 1em;
+    font-size: 1.2em;
+    background-color: var(--success);
+    color: var(--dark-blue);
+    animation: paragraph 0.5s ease 3s;
+    animation-fill-mode: forwards;
+}
+
+p.error{
+    padding: 1em;
+    font-size: 1.2em;
+    background-color: var(--danger);
+    color: var(--white);
+    animation: paragraph 0.5s ease 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes paragraph
+{
+    to{
+        transform: scaleY(0);
+    }
+}
+
+.btn:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+input{
+    font-size: 1.2em;
+    padding: 0.2em 0.4em;
+    margin: 1em 0em;
+}
+
+form{
+    padding: 1em;
+}
+
+form .control{
+    padding: 1em;
+    border-bottom: 1px solid var(--light-blue);
+}
+
+form .control:last-child{
+    border: none;
+    display: flex;
+    justify-content: right;
+}
+
+/* ******************* */
+/* Home Start */
+/* ******************* */
+
+.home{
+    display: flex;
+}
+
+.home .col1{
+    position: fixed;
+    width: 300px;
+    height: 100vh;
+    background-color: #3A3952;
+    transform: translateX(0%);
+    transition: transform 1s ease;
+}
+
+.home .nav-hidden{
+    transform: translateX(-100%);
+}
+
+.home .col2{
+    background-color: #F0F0FA;
+    height: 1000px;
+    width: 100%;
+    padding-left: 300px;
+    transition: padding 1s ease;
+}
+
+.home .home-active{
+    padding-left: 0px;
+}
+
+.home .logo{
+    background-color: #34334a;
+    text-align: center;
+    padding: 1em 0em;
+}
+
+.home .logo img{
+    width: 150px;
+    height: 43px;
+}
+
+.home .links{
+    padding: 1em 1.5em;
+}
+
+.home .link{
+    margin-top: 2em;
+    font-weight: 900;
+    font-size: 18px;
+    color: white;
+    text-transform: capitalize;
+}
+
+.home .link a{
+    text-decoration: none;
+    color: white;
+    letter-spacing: 3px;
+    margin-right: 1em;
+}
+
+.home .col2 nav{
+    background-color: white;
+    padding: 1em 2em;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.home .col2 nav .burger{
+    cursor: pointer;
+}
+
+.home .col2 nav .burger>div{
+    width: 25px;
+    height: 2px;
+    background-color: #007bff;
+}
+
+.home .col2 nav .burger .line:nth-child(2){
+    margin: 6px 0em;
+    width: 20px;
+}
+.home .col2 nav .burger .line:nth-child(3){
+    width: 15px;
+}
+
+.home .col2 nav .burger:hover .line{
+    
+    width: 25px;
+    transition: all 0.5s ease;
+}
+/* ******************* */
+/* Home End */
+/* ******************* */
+
+
+
+
+/* ******************* */
+/* Content Start */
+/* ******************* */
+.content{
+    padding: 2em;
+}
+/* ******************* */
+/* Content End */
+/* ******************* */
+
+
+
+
+
+/* ******************* */
+/* table-page Start */
+/* ******************* */
+
+.table-page{
+    background-color: white;
+    padding: 0em 1.5em;
+}
+.table-page h1{
+    padding: .5em 0em;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    text-transform: capitalize;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ******************* */
+/* table-page End */
+/* ******************* */
+
+
+
+
+/* ******************* */
+/* Table Start */
+/* ******************* */
+.table{
+    font-size: 18px;
+    text-align: center;
+}
+.table .th,.table .tr{
+    display: flex;
+    /* justify-content: space-between; */
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    align-items: center;
+}
+
+.table .th{
+    font-weight: 900;
+    border-bottom: 1px solid black;
+    text-transform: capitalize;
+}
+
+.table .tr{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.table .tr p:first-child,.table .th p:first-child{
+    flex: 1;
+}
+
+.table .tr:hover{
+    background-color: rgba(108, 117, 125, 0.301)
+}
+
+.table p{
+    flex: 2;
+}
+
+.table img{
+    width: 100%;
+}
+/* ******************* */
+/* Table End */
+/* ******************* */

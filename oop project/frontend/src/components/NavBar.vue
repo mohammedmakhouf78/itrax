@@ -25,6 +25,11 @@
                 <li v-if="!loggedIn">
                     <router-link :to="{name:'login'}">Login</router-link>
                 </li>
+                <li v-if="loggedIn">
+                    <a href="http://localhost:8088/itrax/oop%20project/backend/dashboard/pages/home.php" target="_blank">
+                        DashBoard
+                    </a>
+                </li>
                 <li v-if="loggedIn" @click="logout">Logout</li>
                 <li><icon :icon ="['fas','search']"></icon></li>
                 <li>
@@ -51,15 +56,6 @@ export default {
             navActive:false
         }
     },
-    // computed:{
-    //     loggedIn:function(){
-    //         if(this.$store.state.loggedIn == "false"){
-    //             return false
-    //         }else{
-    //             return true
-    //         }
-    //     }
-    // },
     methods: {
         logout:function(){
             this.$store.dispatch('logout')

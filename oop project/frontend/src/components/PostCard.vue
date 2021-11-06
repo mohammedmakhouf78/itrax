@@ -20,10 +20,10 @@
             </p>
             <div class="btn-con">
                 <button class="btn">Read More <i class="fas fa-chevron-right"></i></button>
-                <button class="btn update-btn" @click="modalShow=!modalShow">
+                <button v-if="loggedIn" class="btn update-btn" @click="modalShow=!modalShow">
                     <i class="fas fa-pen"></i>
                 </button>
-                <button @click="deleteBlog(post.id)" class="btn delete">
+                <button v-if="loggedIn" @click="deleteBlog(post.id)" class="btn delete">
                     <i class="fas fa-trash"></i>
                 </button>
             </div>
@@ -57,10 +57,8 @@
                 </form>
             </div>
         </div>
-        <Message :msg="message.msg" :cls="message.cls" :showing="message.showMsg" />
-
-
     </div>
+
 </template>
 <script>
 export default {
@@ -183,8 +181,9 @@ export default {
                 name: this.post.name,
                 published_at:this.post.published_at
             }
-        }
+        },
     },
+    
 }
 </script>
 <style scoped>

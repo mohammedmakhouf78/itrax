@@ -1,9 +1,7 @@
 <?php
-spl_autoload_register(function ($class_name) {
-    $parts = explode('\\', $class_name);
-    include end($parts) . '.php';
-});
-
+include '../../Helper.php';
+use OOP\HelperNS\Helper;
+Helper::autoLoader();
 use OOP\Modules\Blog;
 
 header('Access-Control-Allow-Origin: http://localhost:8080');
@@ -12,6 +10,6 @@ header("Content-Type: application/json");
 
 
 
-$data = Blog::deleteBlog($_POST['id']);
+$data = Blog::getLatestPosts(3);
 
 echo json_encode(Helper::makeResponse($data));

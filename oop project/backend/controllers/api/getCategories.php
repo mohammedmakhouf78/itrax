@@ -1,10 +1,8 @@
 <?php
-spl_autoload_register(function ($class_name) {
-    $parts = explode('\\', $class_name);
-    include end($parts) . '.php';
-});
-
-use OOP\Modules\Blog;
+include '../../Helper.php';
+use OOP\HelperNS\Helper;
+Helper::autoLoader();
+use OOP\Modules\Category;
 
 header('Access-Control-Allow-Origin: http://localhost:8080');
 header("Access-Control-Allow-Headers: *");
@@ -12,6 +10,6 @@ header("Content-Type: application/json");
 
 
 
-$data = Blog::getLatestPosts(3);
+$data = Category::getAll();
 
 echo json_encode(Helper::makeResponse($data));

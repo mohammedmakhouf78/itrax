@@ -54,7 +54,7 @@ export default {
     color: var(--light);
     background-color: var(--light-blue);
     border-radius: 4px;
-    padding: 16px 32px;
+    padding: 16px 24px;
     border: none;
   }
 

@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace OOP\Modules;
 use \OOP\DataBase\DB;
 
@@ -34,6 +36,11 @@ class User
         $data = $db->select('users','*')->where('email','=',$email)->getRow();
         return $data;
     }
-
     
+    public static function getUserById($id)
+    {
+        $db = new DB();
+        $data = $db->select('users','name')->where('id','=',$id)->getRow();
+        return $data;
+    }
 }

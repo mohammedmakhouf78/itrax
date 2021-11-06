@@ -10,7 +10,8 @@ import common from "./common";
 import { store } from "./store/store";
 
 Vue.prototype.$axios = axios;
-axios.defaults.baseURL = "http://localhost:8088/itrax/oop%20project/backend/";
+axios.defaults.baseURL =
+  "http://localhost:8088/itrax/oop%20project/backend/controllers/api";
 
 Vue.mixin(common);
 library.add(fas);

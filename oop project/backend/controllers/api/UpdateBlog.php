@@ -1,8 +1,7 @@
 <?php
-spl_autoload_register(function ($class_name) {
-    $parts = explode('\\', $class_name);
-    include end($parts) . '.php';
-});
+include '../../Helper.php';
+use OOP\HelperNS\Helper;
+Helper::autoLoader();
 use OOP\Modules\Blog;
 
 header('Access-Control-Allow-Origin: http://localhost:8080');
@@ -14,7 +13,7 @@ if(isset($_FILES['file']))
 {
     $tmp = $_FILES['file']['tmp_name'];
     $name = $_FILES['file']['name'];
-    move_uploaded_file($tmp,"../frontend/src/assets/blogs/".$name);
+    move_uploaded_file($tmp,"../../../frontend/src/assets/blogs/".$name);
 }
 
 $data = Blog::updateBlog([

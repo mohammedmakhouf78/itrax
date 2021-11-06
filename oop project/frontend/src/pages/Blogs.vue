@@ -3,10 +3,23 @@
         <div class="btn-con" v-if="loggedIn">
             <button class="btn" @click="modalShow=!modalShow">Make a Blog</button>
         </div>
-        <div class="cards">
-            <Card v-for="(item, index) in posts" :key="index" :post="item" @updateBlog="updateBlog" @deleteBlog="deleteBlog" />
-        </div>
-
+        <!-- <div class="cards"> -->
+            <transition-group 
+            tag="div" 
+            class="cards" 
+            @before-enter="beforeEnter"
+            @enter="enter"
+            >
+            <Card 
+            v-for="(item, index) in posts" 
+            :key="index" 
+            :post="item" 
+            @updateBlog="updateBlog" 
+            @deleteBlog="deleteBlog"
+            :data-index="index" 
+            />
+            </transition-group>
+        <!-- </div> -->
         <div class="create-modal" v-if="modalShow">
             <div class="bg">
                 <button class="btn close" @click="modalShow=!modalShow">X</button>
@@ -24,6 +37,14 @@
                         <input v-model="post.description" type="text" id="description" placeholder="Post Description">
                     </div>
                     <div class="form-control">
+                        <label for="description">
+                            <i class="fas fa-user"></i>
+                        </label>
+                        <select v-model="post.category_id">
+                            <option v-for="(category, index) in categories" :key="index" :value="category.id">{{category.category}}</option>
+                        </select>
+                    </div>
+                    <div class="form-control">
                         <input type="file" @change="handleFileUpload($event)">
                     </div>
                     <button class="btn">Post</button>
@@ -35,6 +56,7 @@
 </template>
 <script>
 import Card from '../components/PostCard.vue'
+import gsap from 'gsap'
 export default {
     components:{
         Card:Card,
@@ -45,9 +67,11 @@ export default {
             post:{
                 file:"",
                 title:"",
-                description:""
+                description:"",
+                category_id:""
             },
-            posts:[]
+            posts:[],
+            categories:[]
         }
     },
     computed:{
@@ -77,6 +101,7 @@ export default {
             formData.append('email',this.authEmail)
             formData.append('description',this.post.description)
             formData.append('title',this.post.title)
+            formData.append('category_id',this.post.category_id)
 
             this.$axios.post('CreatePost.php',
             formData,
@@ -119,7 +144,20 @@ export default {
         },
         deleteBlog:function(id){
             this.posts = this.posts.filter((element)=> element.id != id)
-        }
+        },
+        beforeEnter:function(el){
+            el.style.opacity = 0
+            el.style.transform = "translateY(200px)"
+        },
+        enter:function(el){
+            gsap.to(el,{
+                y:0,
+                opacity:1,
+                duration:0.2,
+                delay: el.dataset.index * 0.2,
+                ease: "expo.out"
+            })
+        },
     },
 
 
@@ -128,6 +166,19 @@ export default {
             .then(res => {
                if(res.data.success){
                    this.posts = res.data.data
+                //    console.log(this.posts)
+               }else{
+                   console.log(res)
+               }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+        this.$axios.get('getCategories.php')
+            .then(res => {
+               if(res.data.success){
+                   this.categories = res.data.data
                 //    console.log(this.posts)
                }else{
                    console.log(res)

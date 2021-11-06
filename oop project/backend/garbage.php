@@ -1,13 +1,15 @@
 <?php
 
 
-spl_autoload_register(function ($class_name) {
-    $parts = explode('\\', $class_name);
-    include end($parts) . '.php';
-});
-use OOP\Modules\Blog;
-use OOP\Modules\User;
-use OOP\DataBase\DB;
+// spl_autoload_register(function ($class_name) {
+//     $parts = explode('\\', $class_name);
+//     include end($parts) . '.php';
+// });
+// include './Helper.php';
+// Helper::autoLoader();
+// use OOP\Modules\Blog;
+// use OOP\Modules\User;
+// use OOP\DataBase\DB;
 
 // $user = new User(1);
 // $data = $user->createPost(new Blog([
@@ -39,4 +41,7 @@ use OOP\DataBase\DB;
 
 
 
-var_dump(Blog::deleteBlog(1));
+// var_dump(Blog::deleteBlog(1));
+
+
+var_dump($_SERVER['HTTP_ORIGIN']);

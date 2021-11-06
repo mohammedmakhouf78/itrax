@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace OOP\Modules;
 use \OOP\DataBase\DB;
 class Blog
@@ -10,12 +12,14 @@ class Blog
     public $description;
     public $image;
     public $published_at;
+    public $category_id;
     public function __construct($blogData)
     {
         $this->title = $blogData['title'];
         $this->description = $blogData['description'];
         $this->image = $blogData['image'];
         $this->published_at = $blogData['published_at'];
+        $this->category_id = $blogData['category_id'];
     }
 
     public static function getAllBlogs()
