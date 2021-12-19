@@ -1,0 +1,15 @@
+{
+  "name": "moham/session16mvc1",
+  "autoload": {
+    "psr-4": {
+      "moham\\mvc\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "mohammedmakhlouf78",
+      "email": "mohammedmakhlouf78@gmail.com"
+    }
+  ],
+  "require": {}
+}

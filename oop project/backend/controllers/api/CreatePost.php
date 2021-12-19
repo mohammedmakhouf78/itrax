@@ -28,11 +28,7 @@ $data = $userObj->createPost(new Blog([
     'category_id' => $_POST['category_id']
 ]));
 
-if (isset($_SERVER['HTTP_ORIGIN']))
-{
-    echo json_encode(Helper::makeResponse($data));
-}
-else
-{
-    header('location: ./getPosts');
-}
+
+echo json_encode(Helper::makeResponse($data));
+
+

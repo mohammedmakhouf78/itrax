@@ -4,6 +4,7 @@ import home from "./pages/Home.vue";
 import Blogs from "./pages/Blogs.vue";
 import Register from "./pages/Register.vue";
 import Login from "./pages/Login.vue";
+import SingleBlog from "./pages/SingleBlog.vue";
 import { store } from "./store/store";
 
 Vue.use(Router);
@@ -38,6 +39,11 @@ const router = new Router({
       meta: {
         requiresNotAuth: true,
       },
+    },
+
+    {
+      path: "/singleBlog/:id",
+      component: SingleBlog,
     },
   ],
 });

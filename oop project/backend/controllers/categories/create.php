@@ -13,7 +13,8 @@ header("Content-Type: application/json");
 if(!empty($_POST['category']))
 {
     $data = Category::create([
-        'category' => $_POST['category']
+        'category' => $_POST['category'],
+        'parent' => $_POST['parent']
     ]);
 }
 else

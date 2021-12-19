@@ -31,6 +31,10 @@
                 <i class="fas fa-tree"></i>
                 <a href="./categories.php">categories</a>
             </div>
+            <div class="link">
+                <i class="fas fa-tree"></i>
+                <a href="./tree.php">Tree</a>
+            </div>
         </div>
     </div>
     <div class="col2">

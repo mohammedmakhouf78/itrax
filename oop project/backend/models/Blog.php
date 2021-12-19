@@ -50,4 +50,11 @@ class Blog
         $result = $db->delete('blogs')->where('id',"=",$id)->excute();
         return $result;
     }
+
+    public static function getSingleBlog($id)
+    {
+        $db = new DB();
+        $result = $db->select('blogs','*')->where('id','=',$id)->getRow();
+        return $result;
+    }
 }

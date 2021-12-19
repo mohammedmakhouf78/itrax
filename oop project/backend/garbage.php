@@ -6,6 +6,9 @@
 //     include end($parts) . '.php';
 // });
 // include './Helper.php';
+
+// use OOP\HelperNS\Helper;
+
 // Helper::autoLoader();
 // use OOP\Modules\Blog;
 // use OOP\Modules\User;
@@ -39,9 +42,7 @@
 
 // var_dump($result);
 
+// var_dump(Blog::getSingleBlog(9));
 
 
-// var_dump(Blog::deleteBlog(1));
-
-
-var_dump($_SERVER['HTTP_ORIGIN']);
+// var_dump($_SERVER['HTTP_ORIGIN']);
